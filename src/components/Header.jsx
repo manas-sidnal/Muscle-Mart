@@ -50,6 +50,11 @@ export default function Header() {
           .site-header nav a:hover::after {
             width: 100%;
           }
+          
+          .site-header nav a:hover{
+          color: var(--accent);
+          text-decoration: none;
+          }
         `}
       </style>
       <header className="site-header">
