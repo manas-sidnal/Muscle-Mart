@@ -66,7 +66,7 @@ export default function ContactForm() {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = validateForm();
     
@@ -75,16 +75,40 @@ export default function ContactForm() {
       return;
     }
     
-    // In a real application, you would send this data to a server
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
-    setErrors({});
+    try {
+      // Send data to backend API
+      const response = await fetch('/api/feedback', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
+      });
+      
+      if (response.ok) {
+        alert('Thank you for your message! Your feedback has been saved successfully.');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+        setErrors({});
+      } else {
+        const errorData = await response.json();
+        alert(`There was an error submitting your message: ${errorData.error || 'Unknown error'}`);
+      }
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+      alert('There was an error submitting your message. Please try again.');
+    }
   };
 
   return (

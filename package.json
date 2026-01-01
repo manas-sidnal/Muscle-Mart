@@ -7,9 +7,11 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "node server.js"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -23,5 +25,18 @@
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
     "vite": "^7.2.4"
-  }
+  },
+  "description": "Muscle Mart is a modern e-commerce platform for fitness enthusiasts, offering a wide range of premium fitness equipment. Built with React and Vite, this application provides a seamless shopping experience with features like product browsing, cart management, and fitness calculators.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manas-sidnal/Muscle-Mart.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manas-sidnal/Muscle-Mart/issues"
+  },
+  "homepage": "https://github.com/manas-sidnal/Muscle-Mart#readme"
 }
